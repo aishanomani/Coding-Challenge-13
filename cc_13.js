@@ -24,6 +24,19 @@ function addEmployeeCard(name, position) { // Function to add employee card dyna
     document.getElementById("employeeContainer").appendChild(card); // Append card to employee container
 }
 
+// Task 3: Converting NodeLists to Arrays for Bulk Updates
+console.log("********** Bulk Update on Employee Cards **********");
+function highlightAllEmployees() {
+    const nodeList = document.querySelectorAll(".employee-card"); // Select all employee cards
+    const employeeCards = Array.from(nodeList); // Convert NodeList to array
+    employeeCards.forEach(card => { // Style update using forEach
+        card.classList.add("highlight"); // Adding highlight class
+    });
+}
+
+// Test Cases
 addEmployeeCard("Miguel Diaz", "Business Analyst"); // Adding Employee 1
 addEmployeeCard("Robby Keene", "Software Engineer"); // Adding Employee 2
 addEmployeeCard("Tory Nichols", "Marketing Specialist"); // Adding Employee 3
+
+setTimeout(highlightAllEmployees, 2000); // Call the function after 2 seconds to apply highlights
