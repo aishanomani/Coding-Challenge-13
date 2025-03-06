@@ -18,6 +18,11 @@ function addEmployeeCard(name, position) { // Function to add employee card dyna
         card.remove();
     });
 
+    removeButton.addEventListener("click", function (event) { // Task 4 
+        event.stopPropagation(); // Prevent event bubbling to the container
+        card.remove(); // Remove only the specific card
+    });
+
     card.appendChild(nameHeading);  // Append heading to card
     card.appendChild(positionParagraph); // Append paragraph to card
     card.appendChild(removeButton); // Append button to card
@@ -33,6 +38,15 @@ function highlightAllEmployees() {
         card.classList.add("highlight"); // Adding highlight class
     });
 }
+
+// Task 4: Implementing Removal of Employee Cards with Event Bubbling (Part of Task 4 is in Task 2)
+console.log("********** Employee Card Removal with Event Bubbling **********");
+document.getElementById("employeeContainer").addEventListener("click", function (event) {
+    if (event.target.classList.contains("employee-card")) {
+        console.log("Employee Card Has Been Clicked:", event.target); // Logs message if card is clicked
+    }
+});
+
 
 // Test Cases
 addEmployeeCard("Miguel Diaz", "Business Analyst"); // Adding Employee 1
