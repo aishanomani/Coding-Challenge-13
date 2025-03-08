@@ -14,9 +14,6 @@ function addEmployeeCard(name, position) { // Function to add employee card dyna
     const removeButton = document.createElement("button"); // Remove button
     removeButton.textContent = "Remove";
     removeButton.setAttribute("class", "remove-btn"); 
-    removeButton.addEventListener("click", function () { // Event listener to remove card when button is clicked
-        card.remove();
-    });
 
     removeButton.addEventListener("click", function (event) { // Task 4 
         event.stopPropagation(); // Prevent event bubbling to the container
@@ -48,6 +45,8 @@ console.log("********** Employee Card Removal with Event Bubbling **********");
 document.getElementById("employeeContainer").addEventListener("click", function (event) {
     if (event.target.classList.contains("employee-card")) {
         console.log("Employee Card Has Been Clicked:", event.target); // Logs message if card is clicked
+    } else {
+        console.log("Click occurred within the employee container but outside a card."); // Logs message if click is within container but outside card
     }
 });
 
