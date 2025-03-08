@@ -23,6 +23,10 @@ function addEmployeeCard(name, position) { // Function to add employee card dyna
         card.remove(); // Remove only the specific card
     });
 
+    card.addEventListener("dblclick", function () { // Task 5
+        enableEditing(card, nameHeading, positionParagraph); // Enable editing by double-clicking
+    });
+
     card.appendChild(nameHeading);  // Append heading to card
     card.appendChild(positionParagraph); // Append paragraph to card
     card.appendChild(removeButton); // Append button to card
@@ -47,6 +51,36 @@ document.getElementById("employeeContainer").addEventListener("click", function 
     }
 });
 
+// Task 5: Inline Editing of Employee Details (Part of Task 5 is in Task 2)
+console.log("********** Inline Editing for Employee Cards **********");
+function enableEditing(card, nameElement, positionElement) {
+    const nameInput = document.createElement("input"); // Edit name
+    nameInput.type = "text";
+    nameInput.value = nameElement.textContent;
+    
+    const positionInput = document.createElement("input"); // Edit position
+    positionInput.type = "text";
+    positionInput.value = positionElement.textContent;
+    
+    const saveButton = document.createElement("button"); // Save button
+    saveButton.textContent = "Save";
+    saveButton.classList.add("save-btn");
+    
+    card.innerHTML = ""; // Clear existing elements
+    card.appendChild(nameInput);
+    card.appendChild(positionInput);
+    card.appendChild(saveButton);
+    
+    saveButton.addEventListener("click", function () {
+        nameElement.textContent = nameInput.value;
+        positionElement.textContent = positionInput.value;
+        
+        card.innerHTML = "";
+        card.appendChild(nameElement);
+        card.appendChild(positionElement);
+        card.appendChild(removeButton);
+    });
+}
 
 // Test Cases
 addEmployeeCard("Miguel Diaz", "Business Analyst"); // Adding Employee 1
